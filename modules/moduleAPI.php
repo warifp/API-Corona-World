@@ -12,7 +12,7 @@ function fetchDataLMAO($curl, $country)
 
 function fetchKawalCorona($curl, $country)
 {
-    $curl->get('http://localhost/api-corona/corona/api-search.php?country=' . $country);
+    $curl->get('http://localhost/api-corona/v2/api-search.php?country=' . $country);
     if ($curl->error) {
         echo 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage . "\n";
     } else {
@@ -35,3 +35,14 @@ $errorCountry[]['error'] = array(
     'code' => '404',
     'message' => 'country error, not defined in request parameter.'
 );
+
+function fetchKawalCoronaALL($curl)
+{
+    $curl->get('https://api.kawalcorona.com/');
+
+    if ($curl->error) {
+        echo 'Error: ' . $curl->errorCode . ': ' . $curl->errorMessage . "\n";
+    } else {
+        return $curl->response;
+    }
+}
