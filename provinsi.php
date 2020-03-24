@@ -6,12 +6,12 @@ use \Curl\Curl;
 $curl = new Curl();
 include "modules/moduleAPI.php";
 
-$errorCountry[]['error'] = array(
+$errorCountry['error'] = array(
     'code' => '404',
     'message' => 'country error, not defined in request parameter.'
 );
 
-$errorNotFound[]['error'] = array(
+$errorNotFound['error'] = array(
     'code' => '404',
     'message' => 'data not found.'
 );
