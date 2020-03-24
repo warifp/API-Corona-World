@@ -7,11 +7,13 @@ $curl = new Curl();
 include "modules/moduleAPI.php";
 
 $errorCountry['error'] = array(
+    'curlStatus' => 0,
     'code' => '404',
     'message' => 'country error, not defined in request parameter.'
 );
 
 $errorNotFound['error'] = array(
+    'curlStatus' => 0,
     'code' => '404',
     'message' => 'data not found.'
 );
@@ -26,6 +28,7 @@ for ($x = 0; $x < count($data->data); $x++) {
     $dataCorona = $data->data[$x];
     if (strpos($dataCorona->provinsi, $search) !== false) {
         $arrayOutput = array(
+            'curlStatus' => 1,
             'provinsi' => $dataCorona->provinsi,
             'positif' => $dataCorona->kasusPosi,
             'sembuh' => $dataCorona->kasusSemb,
