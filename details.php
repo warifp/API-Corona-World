@@ -77,7 +77,7 @@ if($input == 'recovered'){
     $data_positif = $dataCurl_positif->value;
 
     $dataCurl->value;
-    $arr['value'] = array(
+    $arr[] = array(
         'curlStatus' => 1,
         'data' =>
         [
