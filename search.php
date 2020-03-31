@@ -22,6 +22,7 @@ if($statusInput == 'Country not found'){
     $arrayOutput = array(
         'errors' =>
         [
+            'curlStatus' => 0,
             'code' => '404',
             'message' => 'country not found'
         ],
@@ -45,6 +46,7 @@ if($statusInput == 'Country not found'){
 
     // Collect Data to Array
     $arrayOutput = array(
+        'curlStatus' => 1,
         'country' => $country,
         'cases' => $cases,
         'todayCases' => $todayCases,

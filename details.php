@@ -8,11 +8,13 @@ include "modules/api.php";
 
 
 $errorDetails[]['error'] = array(
+    'curlStatus' => 0,
     'code' => '404',
     'message' => 'details error, not defined in request parameter.'
 );
 
 $errorNotFound[]['error'] = array(
+    'curlStatus' => 0,
     'code' => '404',
     'message' => 'data not found.'
 );
@@ -24,6 +26,7 @@ if($input == 'recovered'){
     $dataFetch = $dataCurl[0];
     $data = $dataFetch->TotalRecovered;
     $arr[][$input] = array(
+        'curlStatus' => 1,
         'value' => $data,
         'time' => date('Y-m-d')
     );
@@ -32,6 +35,7 @@ if($input == 'recovered'){
     $dataCurl = fetchDetail($curl, 'https://api.kawalcorona.com/meninggal/');
     $data = $dataCurl->value;
     $arr[][$input] = array(
+        'curlStatus' => 1,
         'value' => $data,
         'time' => date('Y-m-d')
     );
@@ -40,6 +44,7 @@ if($input == 'recovered'){
     $dataCurl = fetchDetail($curl, 'https://api.kawalcorona.com/positif/');
     $data = $dataCurl->value;
     $arr[][$input] = array(
+        'curlStatus' => 1,
         'value' => $data,
         'time' => date('Y-m-d')
     );
@@ -58,6 +63,7 @@ if($input == 'recovered'){
 
     $dataCurl->value;
     $arr['value'] = array(
+        'curlStatus' => 1,
         'positif' => $data_positif,
         'deaths' => $data_deaths,
         'recovered' => $data_recovered
