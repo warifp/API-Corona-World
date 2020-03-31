@@ -7,16 +7,22 @@ $curl = new Curl();
 include "modules/api.php";
 
 
-$errorDetails[]['error'] = array(
+$errorDetails[] = array(
     'curlStatus' => 0,
-    'code' => '404',
-    'message' => 'details error, not defined in request parameter.'
+    'data' =>
+    [
+        'code' => '404',
+        'message' => 'details error, not defined in request parameter.'
+    ]
 );
 
-$errorNotFound[]['error'] = array(
+$errorNotFound[] = array(
     'curlStatus' => 0,
-    'code' => '404',
-    'message' => 'data not found.'
+    'data' =>
+    [
+        'code' => '404',
+        'message' => 'data not found.'
+    ]
 );
 
 $input = $_GET['get'] or die (json_encode($errorDetails));
@@ -27,8 +33,11 @@ if($input == 'recovered'){
     $data = $dataFetch->TotalRecovered;
     $arr[][$input] = array(
         'curlStatus' => 1,
-        'value' => $data,
-        'time' => date('Y-m-d')
+        'data' =>
+        [
+            'value' => $data,
+            'time' => date('Y-m-d')
+        ]
     );
     echo json_encode($arr);
 } else if ($input == 'deaths') {
@@ -36,8 +45,11 @@ if($input == 'recovered'){
     $data = $dataCurl->value;
     $arr[][$input] = array(
         'curlStatus' => 1,
-        'value' => $data,
-        'time' => date('Y-m-d')
+        'data' =>
+        [
+            'value' => $data,
+            'time' => date('Y-m-d')
+        ]
     );
     echo json_encode($arr);
 } else if ($input == 'positif'){
@@ -45,8 +57,11 @@ if($input == 'recovered'){
     $data = $dataCurl->value;
     $arr[][$input] = array(
         'curlStatus' => 1,
-        'value' => $data,
-        'time' => date('Y-m-d')
+        'data' =>
+        [
+            'value' => $data,
+            'time' => date('Y-m-d')
+        ]
     );
     echo json_encode($arr);
 } else if ($input == 'all'){
@@ -64,9 +79,12 @@ if($input == 'recovered'){
     $dataCurl->value;
     $arr['value'] = array(
         'curlStatus' => 1,
-        'positif' => $data_positif,
-        'deaths' => $data_deaths,
-        'recovered' => $data_recovered
+        'data' =>
+        [
+            'positif' => $data_positif,
+            'deaths' => $data_deaths,
+            'recovered' => $data_recovered
+        ]
     );
     echo json_encode($arr);
 } else {

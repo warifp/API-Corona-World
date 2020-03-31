@@ -6,16 +6,22 @@ use \Curl\Curl;
 $curl = new Curl();
 include "modules/moduleAPI.php";
 
-$errorCountry['error'] = array(
+$errorCountry[] = array(
     'curlStatus' => 0,
-    'code' => '404',
-    'message' => 'country error, not defined in request parameter.'
+    'data' =>
+    [
+        'code' => '404',
+        'message' => 'country error, not defined in request parameter.'
+    ]
 );
 
-$errorNotFound['error'] = array(
+$errorNotFound[] = array(
     'curlStatus' => 0,
-    'code' => '404',
-    'message' => 'data not found.'
+    'data' =>
+    [
+        'code' => '404',
+        'message' => 'data not found.'
+    ]
 );
 
 $input = $_GET['lokasi'] or die (json_encode($errorCountry));
@@ -29,12 +35,15 @@ for ($x = 0; $x < count($data->data); $x++) {
     if (strpos($dataCorona->provinsi, $search) !== false) {
         $arrayOutput = array(
             'curlStatus' => 1,
-            'provinsi' => $dataCorona->provinsi,
-            'positif' => $dataCorona->kasusPosi,
-            'sembuh' => $dataCorona->kasusSemb,
-            'meninggal' => $dataCorona->kasusMeni,
-            'update' => $dataCorona->pembaruan,
-            'time' => date("Y/m/d")
+            'data' =>
+            [
+                'provinsi' => $dataCorona->provinsi,
+                'positif' => $dataCorona->kasusPosi,
+                'sembuh' => $dataCorona->kasusSemb,
+                'meninggal' => $dataCorona->kasusMeni,
+                'update' => $dataCorona->pembaruan,
+                'time' => date("Y/m/d")
+            ]
         );
         header('Content-Type: application/json');
         echo json_encode($arrayOutput);

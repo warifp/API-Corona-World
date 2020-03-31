@@ -31,11 +31,6 @@ function fetchDetail($curl, $url)
     }
 }
 
-$errorCountry[]['error'] = array(
-    'code' => '404',
-    'message' => 'country error, not defined in request parameter.'
-);
-
 function fetchKawalCoronaALL($curl)
 {
     $curl->get('https://api.kawalcorona.com/');

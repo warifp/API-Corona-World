@@ -13,6 +13,7 @@ $inputCountry = ucfirst($input);
 
 $dataLMAO = fetchDataLMAO($curl, $inputCountry);
 $dataKawalCorona = fetchKawalCorona($curl, $inputCountry);
+dump($dataKawalCorona);
 
 // validate country
 $statusInput = $dataLMAO; // use function fetchDataLMAO()
@@ -40,8 +41,8 @@ if($statusInput == 'Country not found'){
     $recovered = $dataLMAO->recovered;
     $active = $dataLMAO->active;
     $casesPerOneMillion = $dataLMAO->casesPerOneMillion;
-    $latitude = $dataKawalCorona->coordinates->latitude;
-    $longitude = $dataKawalCorona->coordinates->longitude;
+    $latitude = $dataKawalCorona->Lat;
+    $longitude = $dataKawalCorona->Long_;
     // End Data LMAO
 
     // Collect Data to Array
