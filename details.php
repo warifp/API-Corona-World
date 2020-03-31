@@ -1,10 +1,10 @@
 <?php
-// error_reporting(0);
+error_reporting(0);
 header('Content-Type: application/json');
 require __DIR__ . '/vendor/autoload.php';
 use \Curl\Curl;
 $curl = new Curl();
-include "modules/api.php";
+include "modules/moduleAPI.php";
 
 
 $errorDetails[] = array(
@@ -31,7 +31,7 @@ if($input == 'recovered'){
     $dataCurl = fetchDetail($curl, 'https://api.kawalcorona.com/recovered/');
     $dataFetch = $dataCurl[0];
     $data = $dataFetch->TotalRecovered;
-    $arr[][$input] = array(
+    $arr[] = array(
         'curlStatus' => 1,
         'data' =>
         [
@@ -43,7 +43,7 @@ if($input == 'recovered'){
 } else if ($input == 'deaths') {
     $dataCurl = fetchDetail($curl, 'https://api.kawalcorona.com/meninggal/');
     $data = $dataCurl->value;
-    $arr[][$input] = array(
+    $arr[] = array(
         'curlStatus' => 1,
         'data' =>
         [
@@ -55,7 +55,7 @@ if($input == 'recovered'){
 } else if ($input == 'positif'){
     $dataCurl = fetchDetail($curl, 'https://api.kawalcorona.com/positif/');
     $data = $dataCurl->value;
-    $arr[][$input] = array(
+    $arr[] = array(
         'curlStatus' => 1,
         'data' =>
         [
