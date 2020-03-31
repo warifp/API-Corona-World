@@ -16,10 +16,24 @@ $errorProvinsi[] = array(
     ]  
 );
 
+$maintenance[] = array(
+    'curlStatus' => 1,
+    'data' =>
+    [
+        'code' => '503',
+        'message' => 'api maintenance.'
+    ]  
+);
+
 $input = $_GET['lokasi'] or die (json_encode($errorProvinsi));
 $search = strtoupper($input);
 
-$data = fetchDetail($curl, 'https://indonesia-covid-19.mathdro.id/api/kasus');
+// Maintenance
+echo json_encode($maintenance);
+exit;
+// End Maintenance
+
+$data = fetchDetail($curl, 'https://indonesia-covid-19.mathdro.id/api/kasus/old');
 
 for ($x = 0; $x < count($data->data->nodes); $x++) {
     $dataCorona = $data->data->nodes[$x];
