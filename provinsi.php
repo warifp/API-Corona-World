@@ -41,9 +41,8 @@ for ($x = 0; $x < count($data->data); $x++) {
                 'positif' => $dataCorona->kasusPosi,
                 'sembuh' => $dataCorona->kasusSemb,
                 'meninggal' => $dataCorona->kasusMeni,
-                'update' => $dataCorona->pembaruan,
-                'time' => date("Y/m/d")
-            ]
+            ],
+            'time' => date("Y/m/d")
         );
         header('Content-Type: application/json');
         echo json_encode($arrayOutput);
