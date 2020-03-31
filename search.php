@@ -29,7 +29,7 @@ $statusInput = $dataLMAO; // use function fetchDataLMAO()
 
 if($statusInput == 'Country not found'){
     $arrayOutput = array(
-        'curlStatus' => 1,
+        'curlStatus' => 0,
         'data' =>
         [
             'code' => '404',
@@ -56,6 +56,7 @@ if($statusInput == 'Country not found'){
     // Collect Data to Array
     $arrayOutput = array(
         'curlStatus' => 1,
+        'data'=>
         [
             'country' => $country,
             'cases' => $cases,
@@ -69,7 +70,7 @@ if($statusInput == 'Country not found'){
             [
                 'latitude' => $latitude,
                 'longitude' => $longitude
-            ]
+            ],
         ],
         'time' => date("Y/m/d")
     );
