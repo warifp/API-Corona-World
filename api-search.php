@@ -48,7 +48,7 @@ for ($x = 0; $x < count($data); $x++) {
                     'longitude' => $dataCorona->Long_
                 ],
             ],
-            'fetch' => date("Y/m/d")
+            'time' => date("Y/m/d")
         );
         header('Content-Type: application/json');
         echo json_encode($arrayOutput);
