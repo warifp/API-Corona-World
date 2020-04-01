@@ -32,6 +32,16 @@ $arr = array(
         'version' => '2.3',
         'lastUpdate' => '01 April 2020',
     ],
+    'resource' =>
+    [
+        '1' => 'Kawal Corona',
+        '2' => 'LMAO',
+        '3' => 'MathDroid', 
+        '4' => 'Salma Yarista',
+        '5' => 'Johns Hopkins University',
+        '6' => 'https://docs.google.com/spreadsheets/d/1ma1T9hWbec1pXlwZ89WakRk-OfVUQZsOCFl4FwZxzVw/',
+        '7' => 'https://www.covid19.go.id/',
+    ],
     'time' => date('d-m-Y H:i:s')
 );
 echo json_encode($arr);
