@@ -7,7 +7,7 @@ $curl = new Curl();
 include "modules/moduleAPI.php";
 
 
-$errorDetails[] = array(
+$errorDetails = array(
     'curlStatus' => 0,
     'data' =>
     [
@@ -16,7 +16,7 @@ $errorDetails[] = array(
     ]
 );
 
-$errorNotFound[] = array(
+$errorNotFound = array(
     'curlStatus' => 0,
     'data' =>
     [
@@ -31,7 +31,7 @@ if($input == 'recovered'){
     $dataCurl = fetchDetail($curl, 'https://api.kawalcorona.com/recovered/');
     $dataFetch = $dataCurl[0];
     $data = $dataFetch->TotalRecovered;
-    $arr[] = array(
+    $arr = array(
         'curlStatus' => 1,
         'data' =>
         [
@@ -43,7 +43,7 @@ if($input == 'recovered'){
 } else if ($input == 'deaths') {
     $dataCurl = fetchDetail($curl, 'https://api.kawalcorona.com/meninggal/');
     $data = $dataCurl->value;
-    $arr[] = array(
+    $arr = array(
         'curlStatus' => 1,
         'data' =>
         [
@@ -55,7 +55,7 @@ if($input == 'recovered'){
 } else if ($input == 'positif'){
     $dataCurl = fetchDetail($curl, 'https://api.kawalcorona.com/positif/');
     $data = $dataCurl->value;
-    $arr[] = array(
+    $arr = array(
         'curlStatus' => 1,
         'data' =>
         [
@@ -77,7 +77,7 @@ if($input == 'recovered'){
     $data_positif = $dataCurl_positif->value;
 
     $dataCurl->value;
-    $arr[] = array(
+    $arr = array(
         'curlStatus' => 1,
         'data' =>
         [

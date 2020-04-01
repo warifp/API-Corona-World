@@ -7,7 +7,7 @@ include "modules/moduleAPI.php";
 use \Curl\Curl;
 $curl = new Curl();
 
-$errorProvinsi[] = array(
+$errorProvinsi = array(
     'curlStatus' => 0,
     'data' =>
     [
@@ -16,7 +16,7 @@ $errorProvinsi[] = array(
     ]  
 );
 
-$maintenance[] = array(
+$maintenance = array(
     'curlStatus' => 1,
     'data' =>
     [
@@ -38,7 +38,7 @@ $data = fetchDetail($curl, 'https://indonesia-covid-19.mathdro.id/api/kasus/old'
 for ($x = 0; $x < count($data->data->nodes); $x++) {
     $dataCorona = $data->data->nodes[$x];
     if (strpos($dataCorona->klaster, $search) !== false) {
-        $arrayOutput[]['attributes'] = array(
+        $arrayOutput = array(
             'curlStatus' => 1,
             'data' =>
             [

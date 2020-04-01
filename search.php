@@ -7,7 +7,7 @@ header('Content-Type: application/json');
 use \Curl\Curl;
 $curl = new Curl();
 
-$errorCountry[] = array(
+$errorCountry = array(
     'curlStatus' => 0,
     'data' =>
     [

@@ -6,7 +6,7 @@ use \Curl\Curl;
 $curl = new Curl();
 include "modules/moduleAPI.php";
 
-$errorCountry[] = array(
+$errorCountry = array(
     'curlStatus' => 0,
     'data' =>
     [
@@ -15,7 +15,7 @@ $errorCountry[] = array(
     ]
 );
 
-$errorNotFound[] = array(
+$errorNotFound = array(
     'curlStatus' => 0,
     'data' =>
     [
