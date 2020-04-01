@@ -1,5 +1,5 @@
 <?php
-
+include 'config/config.php';
 function fetchDataLMAO($curl, $country)
 {
     $curl->get('https://corona.lmao.ninja/countries/' . $country);
@@ -10,9 +10,9 @@ function fetchDataLMAO($curl, $country)
     }
 }
 
-function fetchKawalCorona($curl, $country)
+function fetchKawalCorona($curl, $country, $baseURL)
 {
-    $curl->get('http://localhost/api-corona/v2/api-search.php?country=' . $country);
+    $curl->get($baseURL .'/api-search.php?country=' . $country);
     if ($curl->error) {
         // error response
     } else {

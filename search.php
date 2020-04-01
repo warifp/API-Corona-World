@@ -21,7 +21,7 @@ $input = $_GET['country'] or die (json_encode($errorCountry));
 $inputCountry = strtolower($input);
 
 $dataLMAO = fetchDataLMAO($curl, $inputCountry);
-$dataKawalCorona = fetchKawalCorona($curl, $inputCountry);
+$dataKawalCorona = fetchKawalCorona($curl, $inputCountry, $baseURL);
 
 // validate country
 $statusInput = $dataLMAO; // use function fetchDataLMAO()
