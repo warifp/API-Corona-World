@@ -18,7 +18,7 @@ $errorCountry[] = array(
 
 $input = $_GET['country'] or die (json_encode($errorCountry));
 
-$inputCountry = ucfirst($input);
+$inputCountry = strtolower($input);
 
 $dataLMAO = fetchDataLMAO($curl, $inputCountry);
 $dataKawalCorona = fetchKawalCorona($curl, $inputCountry);
@@ -27,7 +27,7 @@ $dataKawalCorona = fetchKawalCorona($curl, $inputCountry);
 $statusInput = $dataLMAO; // use function fetchDataLMAO()
 // end validate country
 
-if($statusInput == 'Country not found'){
+if($statusInput == NULL){
     $arrayOutput = array(
         'curlStatus' => 0,
         'data' =>
@@ -35,7 +35,7 @@ if($statusInput == 'Country not found'){
             'code' => '404',
             'message' => 'country not found'
         ],
-        'timeFetch' => date("Y/m/d")
+        'time' => date("Y/m/d")
     );
     echo json_encode($arrayOutput);
 } else {
