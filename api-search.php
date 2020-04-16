@@ -33,15 +33,21 @@ $data = fetchKawalCoronaALL($curl);
 for ($x = 0; $x < count($data); $x++) {
     $dataCorona = $data[$x]->attributes;
     if ($dataCorona->Country_Region == $search) {
+
+        $active = number_format($dataCorona->Active, 0, ".", ".");
+        $deaths = number_format($dataCorona->Deaths, 0, ".", ".");
+        $recovered = number_format($dataCorona->Recovered, 0, ".", ".");
+        $confirmed = number_format($dataCorona->Confirmed, 0, ".", ".");
+
         $arrayOutput = array(
             'curlStatus' => 1,
             'data' =>
             [
                 'country' => $dataCorona->Country_Region,
-                'confirmed' => $dataCorona->Confirmed,
-                'deaths' => $dataCorona->Deaths,
-                'recovered' => $dataCorona->Recovered,
-                'active' => $dataCorona->Active,
+                'confirmed' => $confirmed,
+                'deaths' => $deaths,
+                'recovered' => $recovered,
+                'active' => $active,
                 'coordinates' =>
                 [
                     'latitude' => $dataCorona->Lat,

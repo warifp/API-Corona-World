@@ -29,8 +29,8 @@ $arr = array(
     [
         'author' => 'Wahyu Arif Purnomo',
         'name' => 'Corona World API',
-        'version' => '2.3',
-        'lastUpdate' => '01 April 2020',
+        'version' => '3.2',
+        'lastUpdate' => '17 April 2020',
     ],
     'resource' =>
     [

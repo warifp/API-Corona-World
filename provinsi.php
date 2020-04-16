@@ -28,23 +28,29 @@ $input = $_GET['lokasi'] or die (json_encode($errorCountry));
 
 $search = ucwords($input);
 
-$data = fetchDetail($curl, 'https://indonesia-covid-19.mathdro.id/api/provinsi');
+$data = fetchDetail($curl, 'https://api.covid19bot.xyz/local');
 
-for ($x = 0; $x < count($data->data); $x++) {
-    $dataCorona = $data->data[$x];
-    if (strpos($dataCorona->provinsi, $search) !== false) {
+for ($x = 0; $x < count($data->data->all); $x++) {
+    $dataCorona = $data->data->all[$x];
+    if (strpos($dataCorona->province, $search) !== false) {
+        
+        $positif = number_format($dataCorona->confirmed, 0, ".", ".");
+        $sembuh = number_format($dataCorona->recovered, 0, ".", ".");
+        $meninggal = number_format($dataCorona->deaths, 0, ".", ".");
+
         $arrayOutput = array(
             'curlStatus' => 1,
             'data' =>
             [
-                'provinsi' => $dataCorona->provinsi,
-                'positif' => $dataCorona->kasusPosi,
-                'sembuh' => $dataCorona->kasusSemb,
-                'meninggal' => $dataCorona->kasusMeni,
+                'ranks' => $dataCorona->ranks,
+                'provinsi' => $dataCorona->province,
+                'positif' => $positif,
+                'sembuh' => $sembuh,
+                'meninggal' => $meninggal,
             ],
             'time' => date("Y/m/d")
         );
-        header('Content-Type: application/json');
+        
         echo json_encode($arrayOutput);
         exit;
     }

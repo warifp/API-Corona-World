@@ -20,6 +20,10 @@ $input = $_GET['country'] or die (json_encode($errorCountry));
 
 $inputCountry = strtolower($input);
 
+if($inputCountry == 'korea'){
+    $inputCountry = 'kr';
+}
+
 $dataLMAO = fetchDataLMAO($curl, $inputCountry);
 $dataKawalCorona = fetchKawalCorona($curl, $inputCountry, $baseURL);
 
@@ -42,13 +46,12 @@ if($statusInput == NULL){
     
     // Data LMAO
     $country = $dataLMAO->country;
-    $cases = $dataLMAO->cases;
-    $todayCases = $dataLMAO->todayCases;
-    $deaths = $dataLMAO->deaths;
-    $todayDeaths = $dataLMAO->todayDeaths;
-    $recovered = $dataLMAO->recovered;
-    $active = $dataLMAO->active;
-    $casesPerOneMillion = $dataLMAO->casesPerOneMillion;
+    $cases = number_format($dataLMAO->cases, 0, ".", ".");
+    $todayCases = number_format($dataLMAO->todayCases, 0, ".", ".");
+    $deaths = number_format($dataLMAO->deaths, 0, ".", ".");
+    $todayDeaths = number_format($dataLMAO->todayDeaths, 0, ".", ".");
+    $recovered = number_format($dataLMAO->recovered, 0, ".", ".");
+    $active = number_format($dataLMAO->active, 0, ".", ".");
     $latitude = $dataKawalCorona->data->coordinates->latitude;
     $longitude = $dataKawalCorona->data->coordinates->longitude;
     // End Data LMAO
@@ -65,7 +68,6 @@ if($statusInput == NULL){
             'todayDeaths' => $todayDeaths,
             'recovered' => $recovered,
             'active' => $active,
-            'casesPerOneMillion' => $casesPerOneMillion,
             'coordinates' =>
             [
                 'latitude' => $latitude,

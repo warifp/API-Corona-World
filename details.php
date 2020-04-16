@@ -70,11 +70,10 @@ if($input == 'recovered'){
     $dataCurl_recovered = fetchDetail($curl, 'https://api.kawalcorona.com/recovered/');
 
     $dataFetch = $dataCurl_recovered[0];
-    $data_recovered = $dataFetch->TotalRecovered;
 
-    $data_deaths = $dataCurl_deaths->value;
-
-    $data_positif = $dataCurl_positif->value;
+    $data_recovered = number_format($dataFetch->TotalRecovered, 0, ".", ".");
+    $data_deaths = number_format($dataCurl_deaths->value, 0, ".", ".");
+    $data_positif = number_format($dataCurl_positif->value, 0, ".", ".");
 
     $dataCurl->value;
     $arr = array(
